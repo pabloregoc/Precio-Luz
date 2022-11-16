@@ -1,12 +1,27 @@
 "use strict";
+
+// voy a leer el State (si tengo) en locastorage
+
+
+
 async function api() {
+  // la fetch la hago si:
+  // - cambio de dia
+  // - pasaron 5 minutos (300000 ms)
   const respuesta = await fetch(
     `https://api.allorigins.win/get?url=https://api.preciodelaluz.org/v1/prices/all?zone=PCB`
   );
   const datos = await respuesta.json();
 
   const ObjDatos = JSON.parse(datos.contents);
+  console.log(ObjDatos)
   const ObjetoCentral = Object.values(ObjDatos);
+  // guardo el json del State en localstorage
+  const State = {
+    precios: ObjetoCentral,
+    timestampLastFetch: Date.now()
+  }
+
   let arrayElectricidad = [];
   for (let i = 0; i < ObjetoCentral.length; i++) {
     arrayElectricidad.push(ObjetoCentral[i].price);
@@ -19,17 +34,22 @@ async function api() {
   let datoHora = new Date();
   let horaActual = datoHora.getHours();
   let x = "";
+  console.log(horaActual)
+
+  x = arrayPorHoras[horaActual]
+  console.log(x)
+/*
   switch (horaActual) {
-    case "00":
+    case 0:
       x = arrayPorHoras[0];
       break;
-    case "01":
+    case 1:
       x = arrayPorHoras[1];
       break;
-    case "02":
+    case 2:
       x = arrayPorHoras[2];
       break;
-    case "03":
+    case "0:
       x = arrayPorHoras[3];
       break;
     case "04":
@@ -47,7 +67,8 @@ async function api() {
     case "08":
       x = arrayPorHoras[8];
       break;
-    case "09":
+    case 9:
+      console.log("HOLAAAAAAA")
       x = arrayPorHoras[9];
       break;
     case 10:
@@ -92,7 +113,8 @@ async function api() {
     case 23:
       x = arrayPorHoras[23];
       break;
-  }
+  } */
+
   precioActual = x / 1000;
 
   const cabeceraMin = document.querySelector(`.precioMinimo`);
