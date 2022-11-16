@@ -14,17 +14,15 @@ header {
   align-items: center;
   margin-top: 0.6em;
   margin-bottom: 0.6em;
-
 }
 header >img {
  width: 5%;
 }
-header > h1{
+header > h1 {
   display: flex;
   justify-content:center;
-  align-items: center;
-  width: 50%;
-  font-size: ;
+  align-items: center;  
+  width: 70%;
 }
 section.proyecto {
   display: grid;
