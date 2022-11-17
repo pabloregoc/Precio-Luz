@@ -118,7 +118,7 @@ async function api() {
     );
     parrafo5.appendChild(textoParrafo5);
     divLavavajillas.appendChild(parrafo5);
-  };);
+  });
 
   const diviLavadora = document.querySelector("div.lavadora");
 
