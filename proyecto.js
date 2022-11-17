@@ -1,37 +1,60 @@
 "use strict";
 
 // voy a leer el State (si tengo) en locastorage
+const localStorageDataLuz = window.localStorage.getItem("dataLuz");
+
+const dataLuz = {
+  precios: localStorageDataLuz ? JSON.parse(localStorageDataLuz).precios: [] ,
+  dataLastFetch: localStorageDataLuz ? JSON.parse(localStorageDataLuz).dataLastFetch: "",
+};
+
+console.log(dataLuz)
+
+const divNevera = document.querySelector("div.nevera");
+const imgNevera = document.createElement("img")
+imgNevera.setAttribute("src", "images/nevera.png" )
+imgNevera.setAttribute("alt", "Nevera" )
+divNevera.append(imgNevera)
+
 
 async function api() {
   // la fetch la hago si:
   // - cambio de dia
   // - pasaron 5 minutos (300000 ms)
-  const tiempoTranscurrido = Date.now();
-  const hoy = new Date(tiempoTranscurrido);
-  //console.log(hoy.toLocaleDateString());
-  const fechaString = hoy.toLocaleDateString("es-ES");
-  const fechaComparacionApi = fechaString.replace("/", "-");
-  const fechaComparacionApi2 = fechaComparacionApi.replace("/", "-");
+  const data = new Date();
 
-  console.log(fechaComparacionApi2);
-  const respuesta = await fetch(
-    `https://api.allorigins.win/get?url=https://api.preciodelaluz.org/v1/prices/all?zone=PCB`
-  );
-  const datos = await respuesta.json();
+  let fechaIgual = false
+  let pasaronCincoMinutos = false;
 
-  const ObjDatos = JSON.parse(datos.contents);
-  console.log(ObjDatos);
-  const ObjetoCentral = Object.values(ObjDatos);
-  console.log(ObjetoCentral);
-  // guardo el json del State en localstorage
-  const State = {
-    precios: ObjetoCentral,
-    timestampLastFetch: Date.now(),
-  };
+  if(dataLuz.dataLastFetch !== ""){
+    const dataLocalstorage = new Date(dataLuz.dataLastFetch)
+    const strFechaLocalStorage = `${dataLocalstorage.getDay()}-${dataLocalstorage.getMonth()}-${dataLocalstorage.getFullYear()}`
+    const strFecha = `${data.getDay()}-${data.getMonth()}-${data.getFullYear()}`
+    if(strFecha === strFechaLocalStorage){
+      fechaIgual = true
+    }
+  }
+
+  if( dataLuz.precios === [] || fechaIgual === false ){
+    console.log("HAGO LA FETCH")
+    const respuesta = await fetch(
+      `https://api.allorigins.win/get?url=https://api.preciodelaluz.org/v1/prices/all?zone=PCB`
+      );
+      const datos = await respuesta.json();
+      
+      const ObjDatos = JSON.parse(datos.contents);
+      //console.log(ObjDatos);
+      dataLuz.precios = Object.values(ObjDatos);
+      //console.log(dataLuz.precios);
+      // guardo el json del State en localstorage
+      dataLuz.dataLastFetch = data.toISOString();
+      
+      window.localStorage.setItem("dataLuz", JSON.stringify(dataLuz) )
+  }
 
   let arrayElectricidad = [];
-  for (let i = 0; i < ObjetoCentral.length; i++) {
-    arrayElectricidad.push(ObjetoCentral[i].price);
+  for (let i = 0; i < dataLuz.precios.length; i++) {
+    arrayElectricidad.push(dataLuz.precios[i].price);
   }
   const arrayPorHoras = [].concat(arrayElectricidad);
 
@@ -75,9 +98,9 @@ async function api() {
   const horaBombilla = precioActual * 0.1;
   const horaOrdenador = precioActual * 2.2;
 
-  const diviNevera = document.querySelector("div.nevera");
-  diviNevera.addEventListener("click", () => {
-    const divNevera = document.querySelector(`.nevera`);
+  divNevera.addEventListener("click", () => {  
+    divNevera.innerHTML = ""
+    divNevera.append(imgNevera)
     const parrafo4 = document.createElement("p");
     const textoParrafo4 = document.createTextNode(
       `Mantener encendida tu nevera te cuesta ${horaNevera} céntimos por hora`
@@ -87,7 +110,7 @@ async function api() {
   });
 
   const diviLavavajillas = document.querySelector("div.lavavajillas");
-  const funLavava = () => {
+  diviLavavajillas.addEventListener("click", () => {
     const divLavavajillas = document.querySelector(`.lavavajillas`);
     const parrafo5 = document.createElement("p");
     const textoParrafo5 = document.createTextNode(
@@ -95,12 +118,11 @@ async function api() {
     );
     parrafo5.appendChild(textoParrafo5);
     divLavavajillas.appendChild(parrafo5);
-  };
-  diviLavavajillas.addEventListener("click", funLavava);
-  diviLavavajillas.removeEventListener("click", funLavava);
+  };);
 
   const diviLavadora = document.querySelector("div.lavadora");
-  diviLavadora.addEventListener("click", () => {
+
+  const handleLavadora = () => {
     const divLavadora = document.querySelector(`.lavadora`);
     const parrafo6 = document.createElement("p");
     const textoParrafo6 = document.createTextNode(
@@ -108,7 +130,11 @@ async function api() {
     );
     parrafo6.appendChild(textoParrafo6);
     divLavadora.appendChild(parrafo6);
-  });
+   
+    
+  }
+
+  diviLavadora.addEventListener("click", handleLavadora );
 
   const diviSecadora = document.querySelector("div.secadora");
   diviSecadora.addEventListener("click", () => {
@@ -165,12 +191,14 @@ async function api() {
     divOrdenador.appendChild(parrafo11);
   });
 
-  let objetoGuardar = JSON.stringify(ObjDatos);
-  let objetoGuardar2 = JSON.stringify(objetoGuardar);
-  const stringApi = localStorage.setItem("date", objetoGuardar2);
+
 }
 
 api();
+
+//let objetoGuardar = JSON.stringify(ObjDatos);
+//let objetoGuardar2 = JSON.stringify(objetoGuardar);
+//const stringApi = localStorage.setItem("date", objetoGuardar2);
 
 //localStorageApi = window.localStorage.setItem(date);
 //console.log(localStorageApi);

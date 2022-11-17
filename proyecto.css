@@ -19,10 +19,8 @@ header >img {
  width: 5%;
 }
 header > h1 {
-  display: flex;
-  justify-content:center;
-  align-items: center;  
-  width: 70%;
+  text-align: center;
+  font-size: 4vw;
 }
 section.proyecto {
   display: grid;
