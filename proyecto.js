@@ -8,14 +8,55 @@ const dataLuz = {
   dataLastFetch: localStorageDataLuz ? JSON.parse(localStorageDataLuz).dataLastFetch: "",
 };
 
-console.log(dataLuz)
+console.log(dataLuz);
 
 const divNevera = document.querySelector("div.nevera");
-const imgNevera = document.createElement("img")
-imgNevera.setAttribute("src", "images/nevera.png" )
-imgNevera.setAttribute("alt", "Nevera" )
-divNevera.append(imgNevera)
+const imgNevera = document.createElement("img");
+imgNevera.setAttribute("src", "images/nevera.png" );
+imgNevera.setAttribute("alt", "Nevera" );
+divNevera.append(imgNevera);
 
+const divLavavajillas = document.querySelector("div.lavavajillas");
+const imgLavavajillas = document.createElement("img");
+imgLavavajillas.setAttribute("src", "images/lavavajillas.png" );
+imgLavavajillas.setAttribute("alt", "Lavavajillas" );
+divLavavajillas.append(imgLavavajillas);
+
+const divLavadora = document.querySelector("div.lavadora");
+const imgLavadora = document.createElement("img");
+imgLavadora.setAttribute("src", "images/lavadora.png" );
+imgLavadora.setAttribute("alt", "Lavadora" );
+divLavadora.append(imgLavadora);
+
+const divSecadora = document.querySelector("div.secadora");
+const imgSecadora = document.createElement("img");
+imgSecadora.setAttribute("src", "images/secadora.png" );
+imgSecadora.setAttribute("alt", "Lavadora" );
+divSecadora.append(imgSecadora);
+
+const divHorno = document.querySelector("div.horno");
+const imgHorno = document.createElement("img");
+imgHorno.setAttribute("src", "images/horno cocina.png" );
+imgHorno.setAttribute("alt", "Horno" );
+divHorno.append(imgHorno);
+
+const divVitro = document.querySelector("div.vitro");
+const imgVitro = document.createElement("img");
+imgVitro.setAttribute("src", "images/vitro.png" );
+imgVitro.setAttribute("alt", "Vitro" );
+divVitro.append(imgVitro);
+
+const divBombilla = document.querySelector("div.bombilla");
+const imgBombilla = document.createElement("img");
+imgBombilla.setAttribute("src", "images/bombilla.png" );
+imgBombilla.setAttribute("alt", "Vitro" );
+divBombilla.append(imgBombilla);
+
+const divOrdenador = document.querySelector("div.ordenador");
+const imgOrdenador = document.createElement("img");
+imgOrdenador.setAttribute("src", "images/computadora.png" );
+imgOrdenador.setAttribute("alt", "Vitro" );
+divOrdenador.append(imgOrdenador);
 
 async function api() {
   // la fetch la hago si:
@@ -36,7 +77,6 @@ async function api() {
   }
 
   if( dataLuz.precios === [] || fechaIgual === false ){
-    console.log("HAGO LA FETCH")
     const respuesta = await fetch(
       `https://api.allorigins.win/get?url=https://api.preciodelaluz.org/v1/prices/all?zone=PCB`
       );
@@ -99,98 +139,92 @@ async function api() {
   const horaOrdenador = precioActual * 2.2;
 
   divNevera.addEventListener("click", () => {  
-    divNevera.innerHTML = ""
-    divNevera.append(imgNevera)
+    divNevera.innerHTML = "";
+    divNevera.append(imgNevera);
     const parrafo4 = document.createElement("p");
     const textoParrafo4 = document.createTextNode(
-      `Mantener encendida tu nevera te cuesta ${horaNevera} céntimos por hora`
+      `Mantener encendida su nevera le cuesta ${horaNevera} céntimos de euro por hora`
     );
     parrafo4.appendChild(textoParrafo4);
     divNevera.appendChild(parrafo4);
   });
 
-  const diviLavavajillas = document.querySelector("div.lavavajillas");
-  diviLavavajillas.addEventListener("click", () => {
-    const divLavavajillas = document.querySelector(`.lavavajillas`);
+  divLavavajillas.addEventListener("click", () => {
+   divLavavajillas.innerHTML = "";
+   divLavavajillas.append(imgLavavajillas);
     const parrafo5 = document.createElement("p");
     const textoParrafo5 = document.createTextNode(
-      `Mantener encendido tu lavavajillas te cuesta ${horaLavavajillas} céntimos por hora`
+      `Mantener encendido su lavavajillas le cuesta ${horaLavavajillas} céntimos de euro por hora`
     );
     parrafo5.appendChild(textoParrafo5);
     divLavavajillas.appendChild(parrafo5);
   });
 
-  const diviLavadora = document.querySelector("div.lavadora");
+  divLavadora.addEventListener("click", () => {
+    divLavadora.innerHTML = "";
+    divLavadora.append(imgLavadora);
+     const parrafo6 = document.createElement("p");
+     const textoParrafo6 = document.createTextNode(
+       `Mantener encendida su lavadora le cuesta ${horaLavadora} céntimos de euro por hora`
+     );
+     parrafo6.appendChild(textoParrafo6);
+     divLavadora.appendChild(parrafo6);
+   });
 
-  const handleLavadora = () => {
-    const divLavadora = document.querySelector(`.lavadora`);
-    const parrafo6 = document.createElement("p");
-    const textoParrafo6 = document.createTextNode(
-      `Mantener encendida tu lavadora te cuesta ${horaLavadora} céntimos por hora`
-    );
-    parrafo6.appendChild(textoParrafo6);
-    divLavadora.appendChild(parrafo6);
-   
-    
-  }
+   divSecadora.addEventListener("click", () => {
+    divSecadora.innerHTML = "";
+    divSecadora.append(imgSecadora);
+     const parrafo7 = document.createElement("p");
+     const textoParrafo7 = document.createTextNode(
+       `Mantener encendida su secadora le cuesta ${horaSecadora} céntimos de euro por hora`
+     );
+     parrafo7.appendChild(textoParrafo7);
+     divSecadora.appendChild(parrafo7);
+   });
 
-  diviLavadora.addEventListener("click", handleLavadora );
-
-  const diviSecadora = document.querySelector("div.secadora");
-  diviSecadora.addEventListener("click", () => {
-    const divSecadora = document.querySelector(`.secadora`);
-    const parrafo7 = document.createElement("p");
-    const textoParrafo7 = document.createTextNode(
-      `Mantener encendida tu secadora te cuesta ${horaSecadora} céntimos por hora`
-    );
-    parrafo7.appendChild(textoParrafo7);
-    divSecadora.appendChild(parrafo7);
-  });
-
-  const diviHorno = document.querySelector("div.horno");
-  diviHorno.addEventListener("click", () => {
-    const divHorno = document.querySelector(`.horno`);
+   divHorno.addEventListener("click", () => {  
+    divHorno.innerHTML = "";
+    divHorno.append(imgHorno);
     const parrafo8 = document.createElement("p");
     const textoParrafo8 = document.createTextNode(
-      `Mantener encendida tu horno te cuesta ${horaHorno} céntimos por hora`
+      `Mantener encendido su horno le cuesta ${horaHorno} céntimos de euro por hora`
     );
     parrafo8.appendChild(textoParrafo8);
     divHorno.appendChild(parrafo8);
   });
 
-  const diviVitro = document.querySelector("div.vitro");
-  diviVitro.addEventListener("click", () => {
-    const divVitro = document.querySelector(`.vitro`);
+  divVitro.addEventListener("click", () => {  
+    divVitro.innerHTML = "";
+    divVitro.append(imgVitro);
     const parrafo9 = document.createElement("p");
     const textoParrafo9 = document.createTextNode(
-      `Mantener encendida tu vitrocerámica te cuesta ${horaVitro} céntimos por hora`
+      `Mantener encendido su vitrocerámica le cuesta ${horaVitro} céntimos de euro por hora`
     );
     parrafo9.appendChild(textoParrafo9);
     divVitro.appendChild(parrafo9);
   });
 
-  const diviBombilla = document.querySelector("div.bombilla");
-  diviBombilla.addEventListener("click", () => {
-    const divBombilla = document.querySelector(`.bombilla`);
+  divBombilla.addEventListener("click", () => {  
+    divBombilla.innerHTML = "";
+    divBombilla.append(imgBombilla);
     const parrafo10 = document.createElement("p");
     const textoParrafo10 = document.createTextNode(
-      `Mantener encendida cada bombilla te cuesta ${horaBombilla} céntimos por hora`
+      `Mantener encendida una bombilla le cuesta ${horaBombilla} céntimos de euro por hora`
     );
     parrafo10.appendChild(textoParrafo10);
     divBombilla.appendChild(parrafo10);
   });
 
-  const diviOrdenador = document.querySelector("div.ordenador");
-  diviOrdenador.addEventListener("click", () => {
-    const divOrdenador = document.querySelector(`.ordenador`);
+  divOrdenador.addEventListener("click", () => {  
+    divOrdenador.innerHTML = "";
+    divOrdenador.append(imgOrdenador);
     const parrafo11 = document.createElement("p");
     const textoParrafo11 = document.createTextNode(
-      `Mantener encendido tu ordenador te cuesta ${horaOrdenador} céntimos por hora`
+      `Mantener encendido su ordenador le cuesta ${horaOrdenador} céntimos de euro por hora`
     );
     parrafo11.appendChild(textoParrafo11);
     divOrdenador.appendChild(parrafo11);
   });
-
 
 }
 
