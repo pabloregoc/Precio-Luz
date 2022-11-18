@@ -4,19 +4,25 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'Sora', sans-serif;
+  display: flex;
+  flex-direction: column;
+  font-family: "Sora", sans-serif;
   background-color: white;
-  font-weight:bold ;
+  font-weight: bold;
+  min-height: 100vh;
+}
+main {
+  flex-grow: 1;
 }
 header {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   margin-top: 0.6em;
   margin-bottom: 0.6em;
 }
-header >img {
- width: 5%;
+header > img {
+  width: 5%;
 }
 header > h1 {
   text-align: center;
@@ -44,7 +50,8 @@ section.electrodomesticos {
   justify-content: space-around;
   gap: 15px;
   margin: 10px;
-  max-height: 50%;}
+  max-height: 50%;
+}
 
 /*section.electrodomesticos {
   display: grid;
@@ -54,17 +61,17 @@ section.electrodomesticos {
   gap: 15px;
   margin: 10px;
 }*/
-.electrodomesticos > div{
-  max-width:320px;
-  max-height:200px ;
+.electrodomesticos > div {
+  max-width: 320px;
+  max-height: 200px;
 }
 .electrodomesticos {
   min-width: 50vh;
 }
-img{
+img {
   max-width: 20%;
 }
-.total{
+.total {
   text-align: center;
   margin: 10px;
 }
