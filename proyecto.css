@@ -65,19 +65,20 @@ section.electrodomesticos {
   justify-content: space-around;
   gap: 15px;
   margin: 10px;
+  font-size: 1.6vw;
 }
 .electrodomesticos > div {
   max-width: 320px;
   max-height: 200px;
 }
-.electrodomesticos {
-}
 img {
-  max-width: 20%;
+  max-width: 5vw;
 }
 .total {
   text-align: center;
   margin: 10px;
+  font-size: 1.6vw;
+
 }
 footer {
   font-size: 10px;
