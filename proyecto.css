@@ -7,7 +7,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Sora", sans-serif;
-  background-color: white;
+  background-color: rgb(204, 197, 197);
   font-weight: bold;
   min-height: 100vh;
 }
@@ -27,6 +27,20 @@ header > img {
 header > h1 {
   text-align: center;
   font-size: 4vw;
+  color: rgba(255,255,255,1);
+  text-decoration: normal;
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  white-space: pre;
+  text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #ff00de , 0 0 70px #ff00de , 0 0 80px #ff00de , 0 0 100px #ff00de ;
+  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+header > h1:hover {
+  text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #00ffff , 0 0 70px #00ffff , 0 0 80px #00ffff , 0 0 100px #00ffff ;
 }
 section.proyecto {
   display: grid;
@@ -34,6 +48,7 @@ section.proyecto {
   max-height: 70px;
   margin: 10px;
   grid-template-columns: repeat(3, 1fr);
+  font-size: 1.6vw;
 }
 div {
   border-color: black;
@@ -50,23 +65,12 @@ section.electrodomesticos {
   justify-content: space-around;
   gap: 15px;
   margin: 10px;
-  max-height: 50%;
 }
-
-/*section.electrodomesticos {
-  display: grid;
-  justify-content: center;
-  justify-items: center;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin: 10px;
-}*/
 .electrodomesticos > div {
   max-width: 320px;
   max-height: 200px;
 }
 .electrodomesticos {
-  min-width: 50vh;
 }
 img {
   max-width: 20%;
