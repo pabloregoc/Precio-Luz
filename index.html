@@ -88,9 +88,9 @@
   </head>
   <body>
     <header>
-      <img class=icono src="images/android-icon-144x144.png" alt="Icono" />
+      <img class=iconoheader src="images/android-icon-144x144.png" alt="Icono" />
       <h1 class="neon">El Precio de la Luz</h1>
-      <img class=icono src="images/android-icon-144x144.png" alt="Icono" />
+      <img class=iconoheader src="images/android-icon-144x144.png" alt="Icono" />
     </header>
     <main>
       <section class="proyecto">
@@ -100,24 +100,27 @@
       </section>
 
       <section class="electrodomesticos">
-        <div class="nevera"></div>
-        <div class="lavavajillas"></div>
-        <div class="lavadora"></div>
-        <div class="secadora"></div>
-        <div class="horno"></div>
-        <div class="vitro"></div>
-        <div class="bombilla"></div>
-        <div class="ordenador"></div>
+        <div class="encendido" id="nevera"></div>
+        <div class="encendido" id="lavavajillas"></div>
+        <div class="encendido"  id="lavadora"></div>
+        <div class="encendido" id="secadora"></div>
+        <div class="encendido" id="horno"></div>
+        <div class="encendido" id="vitro"></div>
+        <div class="encendido" id="bombilla"></div>
+        <div class="encendido" id="ordenador"></div>
       </section>
-      <script src="proyecto.js"></script>
-      <section class="totales" id="totaldiv">
+      
+      <section class="encendido" id="totaldiv">
         <div class="total">Total: xxxxxxx €</div>
       </section>
     </main>
+
     <footer>
       Autores: Jesús Antonio Liñares y Pablo Rego<br />
       Todas las imagenes utilizadas provienen de bancos libres y gratuítos:
       https://www.flaticon.es/ https://icon-icons.com/
     </footer>
+
+    <script src="proyecto.js"></script>
   </body>
 </html>
