@@ -124,20 +124,20 @@ async function api() {
 
   const cabeceraMin = document.querySelector(`.precioMinimo`);
   const parrafo1 = document.createElement("p");
-  const textoParrafo1 = document.createTextNode(`${precioMinimo} Kw/H entre las xxx y las xxx`);
+  const textoParrafo1 = document.createTextNode(`${precioMinimo} Kw/H entre las xxh y las xxh`);
   parrafo1.appendChild(textoParrafo1);
   cabeceraMin.appendChild(parrafo1);
 
   const cabeceraMax = document.querySelector(`.precioMaximo`);
   const parrafo2 = document.createElement("p");
-  const textoParrafo2 = document.createTextNode(`${precioMaximo} Kw/H entre las xxx y las xxx`);
+  const textoParrafo2 = document.createTextNode(`${precioMaximo} Kw/H entre las xxh y las xxh`);
   parrafo2.appendChild(textoParrafo2);
   cabeceraMax.appendChild(parrafo2);
 
   const cabeceraAct = document.querySelector(`.precioActual`);
   const parrafo3 = document.createElement("p");
   const textoParrafo3 = document.createTextNode(
-    `${precioActual} Kw/H entre las ${horaActual} y las ${horaActual + 1}`
+    `${precioActual} Kw/H entre las ${horaActual}h y las ${horaActual + 1.}h`
   );
   parrafo3.appendChild(textoParrafo3);
   cabeceraAct.appendChild(parrafo3);
@@ -164,7 +164,7 @@ async function api() {
     divNevera.append(imgNevera);
     const parrafo4 = document.createElement("p");
     const textoParrafo4 = document.createTextNode(
-      `Mantener encendida su nevera le cuesta ${horaNevera} céntimos de euro por hora`
+      `Mantener encendida su nevera le cuesta ${horaNevera} céntimos de euro por hora.`
     );
     parrafo4.appendChild(textoParrafo4);
     divNevera.appendChild(parrafo4);
@@ -177,7 +177,7 @@ async function api() {
     divLavavajillas.append(imgLavavajillas);
     const parrafo5 = document.createElement("p");
     const textoParrafo5 = document.createTextNode(
-      `Mantener encendido su lavavajillas le cuesta ${horaLavavajillas} céntimos de euro por hora`
+      `Mantener encendido su lavavajillas le cuesta ${horaLavavajillas} céntimos de euro por hora.`
     );
     parrafo5.appendChild(textoParrafo5);
     divLavavajillas.appendChild(parrafo5);
@@ -188,7 +188,7 @@ async function api() {
     divLavadora.append(imgLavadora);
     const parrafo6 = document.createElement("p");
     const textoParrafo6 = document.createTextNode(
-      `Mantener encendida su lavadora le cuesta ${horaLavadora} céntimos de euro por hora`
+      `Mantener encendida su lavadora le cuesta ${horaLavadora} céntimos de euro por hora.`
     );
     parrafo6.appendChild(textoParrafo6);
     divLavadora.appendChild(parrafo6);
@@ -201,7 +201,7 @@ async function api() {
     divSecadora.append(imgSecadora);
     const parrafo7 = document.createElement("p");
     const textoParrafo7 = document.createTextNode(
-      `Mantener encendida su secadora le cuesta ${horaSecadora} céntimos de euro por hora`
+      `Mantener encendida su secadora le cuesta ${horaSecadora} céntimos de euro por hora.`
     );
     parrafo7.appendChild(textoParrafo7);
     divSecadora.appendChild(parrafo7);
@@ -214,7 +214,7 @@ async function api() {
     divHorno.append(imgHorno);
     const parrafo8 = document.createElement("p");
     const textoParrafo8 = document.createTextNode(
-      `Mantener encendido su horno le cuesta ${horaHorno} céntimos de euro por hora`
+      `Mantener encendido su horno le cuesta ${horaHorno} céntimos de euro por hora.`
     );
     parrafo8.appendChild(textoParrafo8);
     divHorno.appendChild(parrafo8);
@@ -225,7 +225,7 @@ async function api() {
     divVitro.append(imgVitro);
     const parrafo9 = document.createElement("p");
     const textoParrafo9 = document.createTextNode(
-      `Mantener encendido su vitrocerámica le cuesta ${horaVitro} céntimos de euro por hora`
+      `Mantener encendido su vitrocerámica le cuesta ${horaVitro} céntimos de euro por hora.`
     );
     parrafo9.appendChild(textoParrafo9);
     divVitro.appendChild(parrafo9);
@@ -236,7 +236,7 @@ async function api() {
     divBombilla.append(imgBombilla);
     const parrafo10 = document.createElement("p");
     const textoParrafo10 = document.createTextNode(
-      `Mantener encendida una bombilla le cuesta ${horaBombilla} céntimos de euro por hora`
+      `Mantener encendida una bombilla le cuesta ${horaBombilla} céntimos de euro por hora.`
     );
     parrafo10.appendChild(textoParrafo10);
     divBombilla.appendChild(parrafo10);
@@ -247,7 +247,7 @@ async function api() {
     divOrdenador.append(imgOrdenador);
     const parrafo11 = document.createElement("p");
     const textoParrafo11 = document.createTextNode(
-      `Mantener encendido su ordenador le cuesta ${horaOrdenador} céntimos de euro por hora`
+      `Mantener encendido su ordenador le cuesta ${horaOrdenador} céntimos de euro por hora.`
     );
     parrafo11.appendChild(textoParrafo11);
     divOrdenador.appendChild(parrafo11);
