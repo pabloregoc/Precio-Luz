@@ -22,11 +22,11 @@ header {
   margin-bottom: 0.6em;
 }
 header > img {
-  width: 5%;
+  width: 8%;
 }
 header > h1 {
   text-align: center;
-  font-size: 4vw;
+  font-size: 7vw;
   color: rgba(255,255,255,1);
   text-decoration: normal;
   text-align: center;
@@ -48,7 +48,7 @@ section.proyecto {
   max-height: 70px;
   margin: 10px;
   grid-template-columns: repeat(3, 1fr);
-  font-size: 1.6vw;
+  font-size: 2.4vw;
 }
 div {
   border-color: black;
@@ -65,7 +65,7 @@ section.electrodomesticos {
   justify-content: space-around;
   gap: 15px;
   margin: 10px;
-  font-size: 1.6vw;
+  font-size: 3vw;
 }
 .electrodomesticos > div {
   max-width: 320px;
@@ -74,15 +74,45 @@ section.electrodomesticos {
   min-width: 300px;
 }
 img {
-  max-width: 5vw;
+  max-width: 10vw;
 }
 .total {
   text-align: center;
   margin: 10px;
-  font-size: 1.6vw;
+  font-size: 4vw;
 
 }
 footer {
-  font-size: 1vw;
+  font-size: 1.7vw;
   margin-left: 10px;
+}
+
+@media (min-width: 600px){
+  .electrodomesticos > div {
+    font-size: 1.6vw;
+  }
+  img {
+    max-width: 5vw;
+  }
+  section.proyecto {
+    gap: 25px;
+    max-height: 70px;
+    margin: 10px;
+    font-size: 1.6vw;
+  }
+  .total {
+    font-size: 1.6vw;
+}
+header > img {
+  width: 5%;
+}
+header > h1 {
+  font-size: 4vw;
+} 
+header > img {
+  width: 5%;
+}
+footer {
+  font-size: 1vw;
+}
 }

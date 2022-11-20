@@ -116,13 +116,13 @@ async function api() {
 
   const cabeceraMin = document.querySelector(`.precioMinimo`);
   const parrafo1 = document.createElement("p");
-  const textoParrafo1 = document.createTextNode(`${precioMinimo} Kw/H `);
+  const textoParrafo1 = document.createTextNode(`${precioMinimo} Kw/H entre las xxx y las xxx`);
   parrafo1.appendChild(textoParrafo1);
   cabeceraMin.appendChild(parrafo1);
 
   const cabeceraMax = document.querySelector(`.precioMaximo`);
   const parrafo2 = document.createElement("p");
-  const textoParrafo2 = document.createTextNode(`${precioMaximo} Kw/H`);
+  const textoParrafo2 = document.createTextNode(`${precioMaximo} Kw/H entre las xxx y las xxx`);
   parrafo2.appendChild(textoParrafo2);
   cabeceraMax.appendChild(parrafo2);
 
