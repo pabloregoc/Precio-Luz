@@ -16,49 +16,57 @@ const electrodomesticos = document.querySelector(".electrodomesticos");
 const divNevera = document.querySelector("div.nevera");
 const imgNevera = document.createElement("img");
 imgNevera.setAttribute("src", "images/nevera.png");
-imgNevera.setAttribute("alt", "Nevera");
+imgNevera.setAttribute("alt","Nevera");
+imgNevera.setAttribute("class","icono");
 divNevera.append(imgNevera);
 
 const divLavavajillas = document.querySelector("div.lavavajillas");
 const imgLavavajillas = document.createElement("img");
 imgLavavajillas.setAttribute("src", "images/lavavajillas.png");
 imgLavavajillas.setAttribute("alt", "Lavavajillas");
+imgLavavajillas.setAttribute("class","icono");
 divLavavajillas.append(imgLavavajillas);
 
 const divLavadora = document.querySelector("div.lavadora");
 const imgLavadora = document.createElement("img");
 imgLavadora.setAttribute("src", "images/lavadora.png");
 imgLavadora.setAttribute("alt", "Lavadora");
+imgLavadora.setAttribute("class","icono");
 divLavadora.append(imgLavadora);
 
 const divSecadora = document.querySelector("div.secadora");
 const imgSecadora = document.createElement("img");
 imgSecadora.setAttribute("src", "images/secadora.png");
 imgSecadora.setAttribute("alt", "Lavadora");
+imgSecadora.setAttribute("class","icono");
 divSecadora.append(imgSecadora);
 
 const divHorno = document.querySelector("div.horno");
 const imgHorno = document.createElement("img");
 imgHorno.setAttribute("src", "images/horno cocina.png");
 imgHorno.setAttribute("alt", "Horno");
+imgHorno.setAttribute("class","icono");
 divHorno.append(imgHorno);
 
 const divVitro = document.querySelector("div.vitro");
 const imgVitro = document.createElement("img");
 imgVitro.setAttribute("src", "images/vitro.png");
 imgVitro.setAttribute("alt", "Vitro");
+imgVitro.setAttribute("class","icono");
 divVitro.append(imgVitro);
 
 const divBombilla = document.querySelector("div.bombilla");
 const imgBombilla = document.createElement("img");
 imgBombilla.setAttribute("src", "images/bombilla.png");
-imgBombilla.setAttribute("alt", "Vitro");
+imgBombilla.setAttribute("alt", "Bombilla");
+imgBombilla.setAttribute("class","icono");
 divBombilla.append(imgBombilla);
 
 const divOrdenador = document.querySelector("div.ordenador");
 const imgOrdenador = document.createElement("img");
 imgOrdenador.setAttribute("src", "images/computadora.png");
-imgOrdenador.setAttribute("alt", "Vitro");
+imgOrdenador.setAttribute("alt", "Ordenador");
+imgOrdenador.setAttribute("class","icono");
 divOrdenador.append(imgOrdenador);
 
 async function api() {
