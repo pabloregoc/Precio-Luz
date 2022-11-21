@@ -10,69 +10,68 @@ const dataLuz = {
     : "",
 };
 
-console.log(dataLuz);
 const electrodomesticos = document.querySelector(".electrodomesticos");
 
 const divNevera = document.querySelector("div#nevera");
 const imgNevera = document.createElement("img");
 imgNevera.setAttribute("src", "images/nevera.png");
-imgNevera.setAttribute("alt","Nevera");
-imgNevera.setAttribute("class","icono");
+imgNevera.setAttribute("alt", "Nevera");
+imgNevera.setAttribute("class", "icono");
 divNevera.append(imgNevera);
 
 const divLavavajillas = document.querySelector("div#lavavajillas");
 const imgLavavajillas = document.createElement("img");
 imgLavavajillas.setAttribute("src", "images/lavavajillas.png");
 imgLavavajillas.setAttribute("alt", "Lavavajillas");
-imgLavavajillas.setAttribute("class","icono");
+imgLavavajillas.setAttribute("class", "icono");
 divLavavajillas.append(imgLavavajillas);
 
 const divLavadora = document.querySelector("div#lavadora");
 const imgLavadora = document.createElement("img");
 imgLavadora.setAttribute("src", "images/lavadora.png");
 imgLavadora.setAttribute("alt", "Lavadora");
-imgLavadora.setAttribute("class","icono");
+imgLavadora.setAttribute("class", "icono");
 divLavadora.append(imgLavadora);
 
 const divSecadora = document.querySelector("div#secadora");
 const imgSecadora = document.createElement("img");
 imgSecadora.setAttribute("src", "images/secadora.png");
 imgSecadora.setAttribute("alt", "Lavadora");
-imgSecadora.setAttribute("class","icono");
+imgSecadora.setAttribute("class", "icono");
 divSecadora.append(imgSecadora);
 
 const divHorno = document.querySelector("div#horno");
 const imgHorno = document.createElement("img");
 imgHorno.setAttribute("src", "images/horno cocina.png");
 imgHorno.setAttribute("alt", "Horno");
-imgHorno.setAttribute("class","icono");
+imgHorno.setAttribute("class", "icono");
 divHorno.append(imgHorno);
 
 const divVitro = document.querySelector("div#vitro");
 const imgVitro = document.createElement("img");
 imgVitro.setAttribute("src", "images/vitro.png");
 imgVitro.setAttribute("alt", "Vitro");
-imgVitro.setAttribute("class","icono");
+imgVitro.setAttribute("class", "icono");
 divVitro.append(imgVitro);
 
 const divBombilla = document.querySelector("div#bombilla");
 const imgBombilla = document.createElement("img");
 imgBombilla.setAttribute("src", "images/bombilla.png");
 imgBombilla.setAttribute("alt", "Bombilla");
-imgBombilla.setAttribute("class","icono");
+imgBombilla.setAttribute("class", "icono");
 divBombilla.append(imgBombilla);
 
 const divOrdenador = document.querySelector("div#ordenador");
 const imgOrdenador = document.createElement("img");
 imgOrdenador.setAttribute("src", "images/computadora.png");
 imgOrdenador.setAttribute("alt", "Ordenador");
-imgOrdenador.setAttribute("class","icono");
+imgOrdenador.setAttribute("class", "icono");
 divOrdenador.append(imgOrdenador);
 
+const divTotal = document.querySelector("#totalId");
+const arrayTotal = [];
+
 async function api() {
-  // la fetch la hago si:
-  // - cambio de dia
-  // - pasaron 5 minutos (300000 ms)
   const data = new Date();
 
   let fechaIgual = false;
@@ -95,49 +94,65 @@ async function api() {
 
     const ObjDatos = JSON.parse(datos.contents);
     //console.log(ObjDatos);
+    console.log(ObjDatos);
     dataLuz.precios = Object.values(ObjDatos);
-    //console.log(dataLuz.precios);
-    // guardo el json del State en localstorage
+
     dataLuz.dataLastFetch = data.toISOString();
 
     window.localStorage.setItem("dataLuz", JSON.stringify(dataLuz));
   }
 
+  console.log(dataLuz);
   let arrayElectricidad = [];
   for (let i = 0; i < dataLuz.precios.length; i++) {
     arrayElectricidad.push(dataLuz.precios[i].price);
   }
-  const arrayPorHoras = [].concat(arrayElectricidad);
+  console.log(arrayElectricidad);
 
-  let precioMaximo = arrayElectricidad.sort()[23] / 1000;
-  let precioMinimo = arrayElectricidad.sort()[0] / 1000;
+  const copiaArray = [].concat(arrayElectricidad);
+
+  copiaArray.sort(function (a, b) {
+    return a - b;
+  });
+
+  let precioMaximo = copiaArray[23] / 1000;
+  let precioMinimo = copiaArray[0] / 1000;
   let precioActual = "";
   let datoHora = new Date();
   let horaActual = datoHora.getHours();
   let x = "";
-  console.log(horaActual);
 
-  x = arrayPorHoras[horaActual];
-  // console.log(x);
+  x = arrayElectricidad[horaActual];
 
   precioActual = x / 1000;
 
+  const posicionHoraMin = arrayElectricidad.indexOf(precioMinimo * 1000);
+
   const cabeceraMin = document.querySelector(`.precioMinimo`);
   const parrafo1 = document.createElement("p");
-  const textoParrafo1 = document.createTextNode(`${precioMinimo} Kw/H entre las xxh y las xxh`);
+  const textoParrafo1 = document.createTextNode(
+    `${precioMinimo} Kw/H entre las ${posicionHoraMin} h. y las ${
+      posicionHoraMin + 1
+    } h.`
+  );
   parrafo1.appendChild(textoParrafo1);
   cabeceraMin.appendChild(parrafo1);
 
+  const posicionHoraMax = arrayElectricidad.indexOf(precioMaximo * 1000);
   const cabeceraMax = document.querySelector(`.precioMaximo`);
   const parrafo2 = document.createElement("p");
-  const textoParrafo2 = document.createTextNode(`${precioMaximo} Kw/H entre las xxh y las xxh`);
+  const textoParrafo2 = document.createTextNode(
+    `${precioMaximo} Kw/H entre las ${posicionHoraMax} h. y las ${
+      posicionHoraMax + 1
+    } h.`
+  );
   parrafo2.appendChild(textoParrafo2);
   cabeceraMax.appendChild(parrafo2);
 
   const cabeceraAct = document.querySelector(`.precioActual`);
   const parrafo3 = document.createElement("p");
   const textoParrafo3 = document.createTextNode(
-    `${precioActual} Kw/H entre las ${horaActual}h y las ${horaActual + 1.}h`
+    `${precioActual} Kw/H entre las ${horaActual}h y las ${horaActual + 1}h`
   );
   parrafo3.appendChild(textoParrafo3);
   cabeceraAct.appendChild(parrafo3);
@@ -152,14 +167,9 @@ async function api() {
   const horaOrdenador = precioActual * 2.2;
   let totalPrecio = 0;
 
-  // electrodomesticos.addEventListener("click", (evento) => {
-  // const target = evento.target;
-  // if (target.matches("section>div")) {
-  //     console.log(target);
-  //  }
-  // });
-
   divNevera.addEventListener("click", () => {
+    arrayTotal.push(horaNevera);
+    document.getElementById("nevera").classList.add("encendido");
     divNevera.innerHTML = "";
     divNevera.append(imgNevera);
     const parrafo4 = document.createElement("p");
@@ -169,10 +179,11 @@ async function api() {
     parrafo4.appendChild(textoParrafo4);
     divNevera.appendChild(parrafo4);
     totalPrecio = totalPrecio + horaNevera;
-    console.log("precio", totalPrecio);
   });
 
   divLavavajillas.addEventListener("click", () => {
+    arrayTotal.push(horaLavavajillas);
+    document.getElementById("lavavajillas").classList.add("encendido");
     divLavavajillas.innerHTML = "";
     divLavavajillas.append(imgLavavajillas);
     const parrafo5 = document.createElement("p");
@@ -184,6 +195,8 @@ async function api() {
   });
 
   divLavadora.addEventListener("click", () => {
+    arrayTotal.push(horaLavadora);
+    document.getElementById("lavadora").classList.add("encendido");
     divLavadora.innerHTML = "";
     divLavadora.append(imgLavadora);
     const parrafo6 = document.createElement("p");
@@ -193,10 +206,11 @@ async function api() {
     parrafo6.appendChild(textoParrafo6);
     divLavadora.appendChild(parrafo6);
     totalPrecio = totalPrecio + horaLavadora;
-    console.log("precio", totalPrecio);
   });
 
   divSecadora.addEventListener("click", () => {
+    arrayTotal.push(horaSecadora);
+    document.getElementById("secadora").classList.add("encendido");
     divSecadora.innerHTML = "";
     divSecadora.append(imgSecadora);
     const parrafo7 = document.createElement("p");
@@ -210,6 +224,8 @@ async function api() {
   });
 
   divHorno.addEventListener("click", () => {
+    arrayTotal.push(horaHorno);
+    document.getElementById("horno").classList.add("encendido");
     divHorno.innerHTML = "";
     divHorno.append(imgHorno);
     const parrafo8 = document.createElement("p");
@@ -221,6 +237,8 @@ async function api() {
   });
 
   divVitro.addEventListener("click", () => {
+    arrayTotal.push(horaVitro);
+    document.getElementById("vitro").classList.add("encendido");
     divVitro.innerHTML = "";
     divVitro.append(imgVitro);
     const parrafo9 = document.createElement("p");
@@ -232,6 +250,9 @@ async function api() {
   });
 
   divBombilla.addEventListener("click", () => {
+    arrayTotal.push(horaBombilla);
+    document.getElementById("bombilla").classList.add("encendido");
+    console.log(arrayTotal);
     divBombilla.innerHTML = "";
     divBombilla.append(imgBombilla);
     const parrafo10 = document.createElement("p");
@@ -243,6 +264,9 @@ async function api() {
   });
 
   divOrdenador.addEventListener("click", () => {
+    arrayTotal.push(horaOrdenador);
+    document.getElementById("ordenador").classList.add("encendido");
+    console.log(arrayTotal);
     divOrdenador.innerHTML = "";
     divOrdenador.append(imgOrdenador);
     const parrafo11 = document.createElement("p");
@@ -252,119 +276,19 @@ async function api() {
     parrafo11.appendChild(textoParrafo11);
     divOrdenador.appendChild(parrafo11);
   });
+
+  divTotal.addEventListener("click", () => {
+    const sumaArrayTotal = arrayTotal.reduce((a, b) => a + b);
+    divTotal.innerHTML = "";
+    document.getElementById("totalId").classList.add("encendido");
+    const parrafoTotal = document.createElement("p");
+    const textoParrafo12 = document.createTextNode(
+      `Tus electrodomésticos consumen un total de ${sumaArrayTotal} céntimos`
+    );
+    parrafoTotal.appendChild(textoParrafo12);
+    divTotal.appendChild(parrafoTotal);
+  });
+  console.log(arrayTotal);
 }
 
 api();
-
-//let objetoGuardar = JSON.stringify(ObjDatos);
-//let objetoGuardar2 = JSON.stringify(objetoGuardar);
-//const stringApi = localStorage.setItem("date", objetoGuardar2);
-
-//localStorageApi = window.localStorage.setItem(date);
-//console.log(localStorageApi);
-/*const tiempo = () => document.getElementbyId(`hora`);
-const intervaloHora = setInterval(() => {
-  const local = new Date();
-  tiempo.innerHTML = local.toLocaleTimeString(`es-ES`);
-}, 1000);*/
-
-//console.log(ObjDatos);
-// console.log(ObjDatos);
-//const keys = ObjDatos.keys;
-//console.log(ObjDatos.GetOwnPropertyNames);
-//console.log(keys);
-// console.log(Object.values(ObjDatos)); ++
-//console.log(precios);
-
-// console.log(arrayVacio);
-//console.log(ObjetoCentral[0].hour);++
-// console.log(ObjetoCentral[1]);++
-
-// console.log(respuesta);
-//console.log(datos);
-
-//console.log(x);
-
-//console.log(precioMaximo);
-//console.log(precioMinimo);
-//console.log(arrayElectricidad.sort());
-// console.log(arrayPorHoras);
-
-/*
-  switch (horaActual) {
-    case 0:
-      x = arrayPorHoras[0];
-      break;
-      case 1:
-        x = arrayPorHoras[1];
-        break;
-        case 2:
-          x = arrayPorHoras[2];
-          break;
-          case "0:
-            x = arrayPorHoras[3];
-            break;
-            case "04":
-              x = arrayPorHoras[4];
-              break;
-              case "05":
-                x = arrayPorHoras[5];
-                break;
-                case "06":
-                  x = arrayPorHoras[6];
-                  break;
-                  case "07":
-                    x = arrayPorHoras[7];
-                    break;
-                    case "08":
-                      x = arrayPorHoras[8];
-                      break;
-                      case 9:
-                        console.log("HOLAAAAAAA")
-                        x = arrayPorHoras[9];
-                        break;
-                        case 10:
-      x = arrayPorHoras[10];
-      break;
-      case 11:
-        x = arrayPorHoras[11];
-      break;
-      case 12:
-        x = arrayPorHoras[12];
-        break;
-        case 13:
-          x = arrayPorHoras[13];
-          break;
-          case 14:
-            x = arrayPorHoras[14];
-      break;
-    case 15:
-      x = arrayPorHoras[15];
-      break;
-      case 16:
-        x = arrayPorHoras[16];
-        break;
-        case 17:
-          x = arrayPorHoras[17];
-          break;
-          case 18:
-            x = arrayPorHoras[18];
-            break;
-            case 19:
-              x = arrayPorHoras[19];
-              break;
-              case 20:
-                x = arrayPorHoras[20];
-                break;
-                case 21:
-      x = arrayPorHoras[21];
-      break;
-      case 22:
-        x = arrayPorHoras[22];
-        break;
-        case 23:
-          x = arrayPorHoras[23];
-          break;
-        } */
-
-//console.log(objetoGuardar2);
