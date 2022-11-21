@@ -87,10 +87,10 @@ section.electrodomesticos {
   color: white;
 }
 .electrodomesticos > div {
-  max-width: 370px;
+  max-width: 300px;
   min-width: 300px;
   max-height: 120px;
-  min-height: 150px;
+  min-height: 160px;
 }
 img {
   max-width: 23vw;
