@@ -129,10 +129,10 @@ div.encendido:hover{
       font-size: 1vw;
     }
     img {
-      max-width: 8vw;
+      max-width: 5vw;
     }
     div.encendido > img {
-      max-width: 5vw;
+      max-width: 3vw;
     }
     section.proyecto {
       gap: 25px;
