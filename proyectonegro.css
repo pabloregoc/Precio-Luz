@@ -103,21 +103,30 @@ section.electrodomesticos {
 img {
   max-width: 10vw;
 }
-#totaldiv {
+section#totalDiv {
   text-align: center;
   margin: 10px;
-  font-size: 4vw;
+  padding: 0.3em;
+  text-align: center;
+}
+div#totalId{
+  font-size: 3vw;
+  text-align: center;
+  margin: 10px;
   color: white;
+  border-radius: 8%;
+  max-height: 20vw;
 }
 footer {
-  font-size: 1.7vw;
+  font-size: 1.5vw;
   margin-left: 10px;
   color: white;
+  margin-top: 8px;
 }
-.encendido{
+/*.encendido{
     box-shadow: 0 0 10px #ff00de;
 }
-
+*/
 @media (min-width: 600px){
     .electrodomesticos > div {
       font-size: 1.5vw;
@@ -132,8 +141,9 @@ footer {
       font-size: 1.3vw;
       max-height: 90px;
     }
-    .total {
+    div#totalId{
       font-size: 1.6vw;
+      
     }
     header > img {
       width: 5%;
@@ -146,5 +156,6 @@ footer {
     }
     footer {
       font-size: 1vw;
+      
     }
     }
