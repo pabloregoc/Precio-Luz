@@ -138,18 +138,15 @@ div.encendido:hover{
       gap: 25px;
       max-height: 70px;
       margin: 10px;
-      font-size: 1vw;
+      font-size: 1.3vw;
       max-height: 90px;
     }
     div#totalId{
       font-size: 1.6vw;
       min-height: 4vw;
     }
-    header > img {
-      width: 5%;
-    }
     header > h1 {
-      font-size: 4vw;
+      font-size: 6vw;
     } 
     header > img {
       width: 5%;
