@@ -63,10 +63,10 @@ section.proyecto {
   color: white;
 }
 .proyecto > div{
-    box-shadow: 0 0 10px #ff00de;   
+  box-shadow: 0 0 10px #ff00de;   
 }
 .proyecto >div:hover{
-    box-shadow: 0 0 50px #00ffff ;
+  box-shadow: 0 0 50px #00ffff ;
 }
 div {
   border-color: white;
@@ -108,7 +108,6 @@ div#totalId{
   color: white;
   border-radius: 8%;
   min-height: 15vw;
-  
 }
 footer {
   font-size: 1.5vw;
@@ -116,10 +115,12 @@ footer {
   color: white;
   margin-top: 8px;
 }
-/*.encendido{
+.encendido{
     box-shadow: 0 0 10px #ff00de;
 }
-*/
+div.encendido:hover{
+  box-shadow: 0 0 50px #00ffff ;
+}
 @media (min-width: 600px){
     .electrodomesticos > div {
       font-size: 1.5vw;
