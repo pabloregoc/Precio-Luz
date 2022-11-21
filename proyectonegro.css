@@ -126,10 +126,10 @@ div.encendido:hover{
 }
 @media (min-width: 600px){
     .electrodomesticos > div {
-      font-size: 1.3vw;
+      font-size: 1vw;
     }
     img {
-      max-width: 10vw;
+      max-width: 8vw;
     }
     div.encendido > img {
       max-width: 5vw;
