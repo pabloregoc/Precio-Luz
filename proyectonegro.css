@@ -87,10 +87,8 @@ section.electrodomesticos {
   color: white;
 }
 .electrodomesticos > div {
-  max-width: 22vw;
-  min-width: 22vw;
-  max-height: 12vw;
-  min-height: 12vw;
+  min-width: 60vw;
+  min-height: 30vw;
 }
 img {
   max-width: 23vw;
@@ -127,6 +125,10 @@ div.encendido:hover{
 @media (min-width: 600px){
     .electrodomesticos > div {
       font-size: 1vw;
+      max-width: 22vw;
+      min-width: 22vw;
+      max-height: 12vw;
+      min-height: 12vw;
     }
     img {
       max-width: 5vw;
@@ -155,4 +157,4 @@ div.encendido:hover{
       font-size: 1vw;
       
     }
-    }
+}
