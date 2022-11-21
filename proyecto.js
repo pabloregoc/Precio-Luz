@@ -93,8 +93,7 @@ async function api() {
     const datos = await respuesta.json();
 
     const ObjDatos = JSON.parse(datos.contents);
-    //console.log(ObjDatos);
-    console.log(ObjDatos);
+  
     dataLuz.precios = Object.values(ObjDatos);
 
     dataLuz.dataLastFetch = data.toISOString();
@@ -102,12 +101,11 @@ async function api() {
     window.localStorage.setItem("dataLuz", JSON.stringify(dataLuz));
   }
 
-  console.log(dataLuz);
+  
   let arrayElectricidad = [];
   for (let i = 0; i < dataLuz.precios.length; i++) {
     arrayElectricidad.push(dataLuz.precios[i].price);
   }
-  console.log(arrayElectricidad);
 
   const copiaArray = [].concat(arrayElectricidad);
 
@@ -174,11 +172,10 @@ async function api() {
     divNevera.append(imgNevera);
     const parrafo4 = document.createElement("p");
     const textoParrafo4 = document.createTextNode(
-      `Mantener encendida su nevera le cuesta ${horaNevera} céntimos de euro por hora.`
+      `Mantener encendida su nevera le cuesta ${horaNevera} euros por hora.`
     );
     parrafo4.appendChild(textoParrafo4);
     divNevera.appendChild(parrafo4);
-    totalPrecio = totalPrecio + horaNevera;
   });
 
   divLavavajillas.addEventListener("click", () => {
@@ -188,7 +185,7 @@ async function api() {
     divLavavajillas.append(imgLavavajillas);
     const parrafo5 = document.createElement("p");
     const textoParrafo5 = document.createTextNode(
-      `Mantener encendido su lavavajillas le cuesta ${horaLavavajillas} céntimos de euro por hora.`
+      `Mantener encendido su lavavajillas le cuesta ${horaLavavajillas} euros por hora.`
     );
     parrafo5.appendChild(textoParrafo5);
     divLavavajillas.appendChild(parrafo5);
@@ -201,7 +198,7 @@ async function api() {
     divLavadora.append(imgLavadora);
     const parrafo6 = document.createElement("p");
     const textoParrafo6 = document.createTextNode(
-      `Mantener encendida su lavadora le cuesta ${horaLavadora} céntimos de euro por hora.`
+      `Mantener encendida su lavadora le cuesta ${horaLavadora} euros por hora.`
     );
     parrafo6.appendChild(textoParrafo6);
     divLavadora.appendChild(parrafo6);
@@ -215,12 +212,11 @@ async function api() {
     divSecadora.append(imgSecadora);
     const parrafo7 = document.createElement("p");
     const textoParrafo7 = document.createTextNode(
-      `Mantener encendida su secadora le cuesta ${horaSecadora} céntimos de euro por hora.`
+      `Mantener encendida su secadora le cuesta ${horaSecadora} euros por hora.`
     );
     parrafo7.appendChild(textoParrafo7);
     divSecadora.appendChild(parrafo7);
     totalPrecio = totalPrecio + horaSecadora;
-    console.log("precio", totalPrecio);
   });
 
   divHorno.addEventListener("click", () => {
@@ -230,7 +226,7 @@ async function api() {
     divHorno.append(imgHorno);
     const parrafo8 = document.createElement("p");
     const textoParrafo8 = document.createTextNode(
-      `Mantener encendido su horno le cuesta ${horaHorno} céntimos de euro por hora.`
+      `Mantener encendido su horno le cuesta ${horaHorno} euros por hora.`
     );
     parrafo8.appendChild(textoParrafo8);
     divHorno.appendChild(parrafo8);
@@ -243,7 +239,7 @@ async function api() {
     divVitro.append(imgVitro);
     const parrafo9 = document.createElement("p");
     const textoParrafo9 = document.createTextNode(
-      `Mantener encendido su vitrocerámica le cuesta ${horaVitro} céntimos de euro por hora.`
+      `Mantener encendido su vitrocerámica le cuesta ${horaVitro} euros por hora.`
     );
     parrafo9.appendChild(textoParrafo9);
     divVitro.appendChild(parrafo9);
@@ -252,12 +248,11 @@ async function api() {
   divBombilla.addEventListener("click", () => {
     arrayTotal.push(horaBombilla);
     document.getElementById("bombilla").classList.add("encendido");
-    console.log(arrayTotal);
     divBombilla.innerHTML = "";
     divBombilla.append(imgBombilla);
     const parrafo10 = document.createElement("p");
     const textoParrafo10 = document.createTextNode(
-      `Mantener encendida una bombilla le cuesta ${horaBombilla} céntimos de euro por hora.`
+      `Mantener encendida una bombilla le cuesta ${horaBombilla} euros por hora.`
     );
     parrafo10.appendChild(textoParrafo10);
     divBombilla.appendChild(parrafo10);
@@ -266,12 +261,11 @@ async function api() {
   divOrdenador.addEventListener("click", () => {
     arrayTotal.push(horaOrdenador);
     document.getElementById("ordenador").classList.add("encendido");
-    console.log(arrayTotal);
     divOrdenador.innerHTML = "";
     divOrdenador.append(imgOrdenador);
     const parrafo11 = document.createElement("p");
     const textoParrafo11 = document.createTextNode(
-      `Mantener encendido su ordenador le cuesta ${horaOrdenador} céntimos de euro por hora.`
+      `Mantener encendido su ordenador le cuesta ${horaOrdenador} euros por hora.`
     );
     parrafo11.appendChild(textoParrafo11);
     divOrdenador.appendChild(parrafo11);
@@ -283,12 +277,11 @@ async function api() {
     document.getElementById("totalId").classList.add("encendido");
     const parrafoTotal = document.createElement("p");
     const textoParrafo12 = document.createTextNode(
-      `Tus electrodomésticos consumen un total de ${sumaArrayTotal} céntimos`
+      `Tus electrodomésticos consumen un total de ${sumaArrayTotal} euros por hora.`
     );
     parrafoTotal.appendChild(textoParrafo12);
     divTotal.appendChild(parrafoTotal);
   });
-  console.log(arrayTotal);
 }
 
 api();
