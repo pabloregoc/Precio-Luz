@@ -115,7 +115,8 @@ div#totalId{
   margin: 10px;
   color: white;
   border-radius: 8%;
-  max-height: 20vw;
+  min-height: 15vw;
+  
 }
 footer {
   font-size: 1.5vw;
@@ -143,7 +144,7 @@ footer {
     }
     div#totalId{
       font-size: 1.6vw;
-      
+      min-height: 4vw;
     }
     header > img {
       width: 5%;
