@@ -141,7 +141,7 @@ const main = async () => {
   cabeceraMin.innerHTML = "";
   const parrafo1 = document.createElement("p");
   const textoParrafo1 = document.createTextNode(
-    `${precioMinimo} Kw/H entre las ${posicionHoraMin} h. y las ${
+    `El precio mínimo de hoy es de ${precioMinimo} euros Kw/H entre las ${posicionHoraMin} h. y las ${
       posicionHoraMin + 1
     } h.`
   );
@@ -153,7 +153,7 @@ const main = async () => {
   cabeceraMax.innerHTML = "";
   const parrafo2 = document.createElement("p");
   const textoParrafo2 = document.createTextNode(
-    `${precioMaximo} Kw/H entre las ${posicionHoraMax} h. y las ${
+    `El precio máximo de hoy es de ${precioMaximo} euros Kw/H entre las ${posicionHoraMax} h. y las ${
       posicionHoraMax + 1
     } h.`
   );
@@ -164,7 +164,7 @@ const main = async () => {
   cabeceraAct.innerHTML = "";
   const parrafo3 = document.createElement("p");
   const textoParrafo3 = document.createTextNode(
-    `${precioActual} Kw/H entre las ${horaActual}h y las ${horaActual + 1}h`
+    `El precio actual es de ${precioActual} euros Kw/H entre las ${horaActual}h y las ${horaActual + 1}h`
   );
   parrafo3.appendChild(textoParrafo3);
   cabeceraAct.appendChild(parrafo3);
